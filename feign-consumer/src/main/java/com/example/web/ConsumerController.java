@@ -16,6 +16,16 @@ public class ConsumerController {
         return helloService.hello();
     }
 
+    @RequestMapping(value = "/feign-consumer2", method = RequestMethod.GET)
+    public String helloConsumer2() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(helloService.hello()).append("\n");
+        sb.append(helloService.hello1("Mic")).append("\n");
+        sb.append(helloService.hello2("Mic", 18)).append("\n");
+        sb.append(helloService.hello3(new User("Jack", 20))).append("\n");
+        return sb.toString();
+    }
+
 
 
 }
